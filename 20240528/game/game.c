@@ -3,6 +3,7 @@
 int main(void) {
   int input = 0;
   int flag = 1;
+  srand(time(NULL));
   do {
     memu();
     printf("please enter your chooce for begin game\n");

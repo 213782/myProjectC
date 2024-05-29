@@ -33,7 +33,7 @@ void print_board(char board[ROW][COL], int rows, int clos) {
 }
 void player_mv(char board[ROW][COL], int row, int col) {
   do {
-    printf("please player input\n");
+    printf("please player input > \n");
     scanf("%d %d", &row, &col);
     if (row >= 1 && row <= ROW && col >= 1 && col <= COL) {
       if (board[row - 1][col - 1] == ' ') {
@@ -47,6 +47,19 @@ void player_mv(char board[ROW][COL], int row, int col) {
     }
   } while (1);
 }
+void compter_mv(char board[ROW][COL], int row, int col) {
+  printf("compter chess > \n");
+  int x = 0;
+  int y = 0;
+  while (1) {
+    x = rand() % row;
+    y = rand() % col;
+    if (board[x][y] == ' ') {
+      board[x][y] = '#';
+      break;
+    }
+  }
+}
 void game() {
   char board[ROW][COL] = {0};
   init_board(board, ROW, COL);
@@ -55,6 +68,8 @@ void game() {
   int col = 0;
   while (1) {
     player_mv(board, raw, col);
+    print_board(board, ROW, COL);
+    compter_mv(board, ROW, COL);
     print_board(board, ROW, COL);
   }
 }
